@@ -1,5 +1,6 @@
 *{
     transition: all 250ms ease;
+    /* overflow-y: hidden; */
 }
 .searchArea{
     display: flex;
