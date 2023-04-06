@@ -13,9 +13,11 @@ const Search = () => {
         setErr("")
         setIni("")
         if(eId !== ""){
+            let list = [];
             emp.employees.map((emp) => {
                 if(eId === emp.id){ 
-                   setSearchResult(emp);
+                   list = [...list, emp]
+                   setSearchResult(list);
                    return;
                 }
             })
@@ -47,11 +49,15 @@ const Search = () => {
                         </tr>
                     </thead>
                     <tbody className='tbody'> 
-                        <tr>
-                            <th>{searchResult.id}</th>
-                            <th>{searchResult.name}</th>
-                            <th>{searchResult.desig}</th>
+                    {searchResult.map((res, index) => {
+                        return(
+                        <tr key={index}>
+                            <th>{res.id}</th>
+                            <th>{res.name}</th>
+                            <th>{res.desig}</th>
                         </tr>
+                        )
+                    })}
                     </tbody>
                 </table> : ""}
         </div>
